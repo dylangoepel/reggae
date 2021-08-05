@@ -1,0 +1,27 @@
+cabal-version:      3.4
+name:               reggae
+version:            0.1.0.0
+
+synopsis: simple regex engine
+
+-- The license under which the package is released.
+license: BSD-2-Clause
+
+author:             Dylan Göpel
+maintainer:         dylan.connor@t-online.de
+
+category: Text
+extra-source-files:
+
+executable reggae
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    other-modules: Parser, Recognizer, Regex
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+
+    build-depends:    base ^>=4.14.0.0
+    hs-source-dirs:   app
+    default-language: Haskell2010
