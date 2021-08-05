@@ -7,7 +7,7 @@ strategy.
 ## Installation
 Install via
 ```bash
-cabal install.
+cabal install
 ```
 
 ## Usage
