@@ -8,12 +8,13 @@ main :: IO ()
 main = do
     args <- getArgs
     if length args < 2 then
-        error "Invalid usage."
+        ioError (userError "Please supply a regex and a file path")
     else
-        matchPattern (compileRegex (head args)) (args !! 1)
+        matchPattern (compileRegex (head args)) $ args !! 1
 
 matchPattern :: Maybe (Recognizer Char) -> String -> IO ()
 matchPattern Nothing s = fail "Invalid regular expression."
-matchPattern (Just r) s = case recognize r s of
-    Nothing -> error "No match."
-    Just tail -> putStrLn tail
+matchPattern (Just r) s
+    = readFile s >>=
+        foldl (>>) (return ())
+            . map putStrLn . findAll r
